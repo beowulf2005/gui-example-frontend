@@ -1,0 +1,71 @@
+.info-icon-mixin (@type , @color , @icon, @size) {
+	.info.@{type} {
+		border-color: @color;
+		.icon {
+			width : @size;
+			height : @size;
+			line-height : @size;
+			background-color: @color;
+			text-align: center;
+			font-weight: bold;
+			font-size: (@size * 0.8);
+			cursor: pointer;
+			color: white;
+			&:before {
+				content: @icon;
+			}
+		}
+	}
+}
+
+.info-box-mixin (@offset: 40px, @border-size: 2px, @line-height: 20px){
+	.info .info-box.has-arrow-left {
+		z-index : 3;
+		min-height: (@border-size * 12 * 1.414);
+		position: absolute;
+		padding: (@border-size * 2);
+		border-radius: (@border-size * 4);
+		border-width: @border-size;
+		border-color: inherit;
+		border-style: solid;
+		top: -(@border-size * 2 * 1.414);
+		left: (@border-size * 4 * 1.414 + @offset);
+		background-color: white;
+		line-height:@line-height;
+		font-size : (@line-height * 0.75);
+		&:before {
+			content: '';
+			position: absolute;
+			top: (@border-size * 4 * 1.414);
+			left: -(@border-size * 4 * 1.414 - @border-size);
+			height: (@border-size * 8);
+			width: (@border-size * 8);
+			border: @border-size solid transparent;
+			border-top: @border-size solid;
+			border-top-color: inherit;
+			border-left: @border-size solid;
+			border-left-color: inherit;
+			transform: rotate(-45deg);
+		}
+	}
+}
+
+.info-icon-mixin (C , rgb(127, 127, 255) , 'C', 30px);
+.info-icon-mixin (H , rgb(255, 0, 127) , 'H', 30px);
+.info-icon-mixin (I , rgb(255, 127, 0) , 'I', 30px);
+.info-icon-mixin (N , rgb(255, 127, 127) , 'N', 30px);
+.info-icon-mixin (A , rgb(127, 127, 0) , 'A', 30px);
+.info-box-mixin;
+
+
+.ani-flip{
+	transform: rotateY(360deg);
+	transition: transform 1.2s;
+}
+
+.info-box .description {
+	padding-bottom: 8px;
+}
+.info-box .edit-link {
+    padding-top: 8px;
+}

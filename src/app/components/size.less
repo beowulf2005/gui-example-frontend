@@ -1,0 +1,98 @@
+@pm-px-step: 5;
+@pm-px-loop: 10;
+@size-px-step: 10;
+@size-px-loop: 40;
+@size-procent-loop: 20;
+
+.padding-magin-px(@n, @i: 1) when (@i =< @n) {
+
+  @px: (@i * @pm-px-step);
+
+  .p@{px}, .tp@{px}, .tbp@{px} {
+    padding-top: unit(@px, px);
+  }
+
+  .p@{px}, .rp@{px}, .lrp@{px} {
+    padding-right: unit(@px, px);
+  }
+
+  .p@{px}, .bp@{px}, .tbp@{px} {
+    padding-bottom: unit(@px, px);
+  }
+
+  .p@{px}, .lp@{px}, .lrp@{px} {
+    padding-left: unit(@px, px);
+  }
+
+  .m@{px}, .tm@{px}, .tbm@{px} {
+    margin-top: unit(@px, px);
+  }
+
+  .m@{px}, .rm@{px}, .lrm@{px} {
+    margin-right: unit(@px, px);
+  }
+
+  .m@{px}, .bm@{px}, .tbm@{px} {
+    margin-bottom: unit(@px, px);
+  }
+
+  .m@{px}, .lm@{px}, .lrm@{px} {
+    margin-left: unit(@px, px);
+  }
+
+  .padding-magin-px(@n, (@i + 1));
+}
+
+.size-px(@n, @i: 1) when (@i =< @n) {
+
+  @px: (@i * @size-px-step);
+
+  .w@{px} {
+    width: unit(@px, px);
+  }
+
+  .h@{px} {
+    height: unit(@px, px);
+  }
+
+  .lh@{px}{
+    line-height: unit(@px, px);
+  }
+
+  .size-px(@n, (@i + 1));
+}
+
+.size-procent(@n, @i: 1) when (@i =< @n) {
+
+  @rate: (@i * 100 / @n);
+
+  .w@{rate}p {
+    width: (@rate * 1%);
+  }
+
+  .h@{rate}p {
+    width: (@rate * 1%);
+  }
+
+  .size-procent(@n, (@i + 1));
+}
+
+.f-size(@n:40, @i:10) when (@i=<@n) {
+	.f@{i} {
+		font-size : unit(@i, px);
+	}
+	.f-size(@n, (@i + 1));
+}
+
+.size-px(@size-px-loop);
+
+.size-procent(@size-procent-loop);
+
+.padding-magin-px(@pm-px-loop);
+
+.f-size;
+
+.full {
+	width: 100%;
+	height: 100%;
+}
